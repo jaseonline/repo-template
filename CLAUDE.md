@@ -24,6 +24,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 <!-- Things that cost time to discover. Each names the symptom and the fix. -->
 
 - Credentials come from environment variables (see `.env.example`). Never write credentials into the repo.
+- Every workflow `uses:` is pinned to a full commit SHA with the version as a trailing comment (`actions/checkout@<sha> # v7.0.1`). Super-linter's zizmor check fails on tags.
+- Formatters are Biome (JS/TS/JSON) and ruff (Python). Prettier is deliberately disabled in super-linter, so don't add it.
 
 ## Versioning
 

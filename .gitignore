@@ -34,6 +34,7 @@ tmp/
 !.claude/skills/
 !.claude/agents/
 !.claude/commands/
+CLAUDE.local.md
 # Remember plugin history
 .remember/
 
