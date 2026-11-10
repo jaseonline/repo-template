@@ -51,6 +51,8 @@ jobs:
           VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_YAML_PRETTIER: false
           VALIDATE_JSCPD: false
+          # textlint's terminology rule rejects house style ("repo", "README"); prose isn't linted
+          VALIDATE_NATURAL_LANGUAGE: false
           # Commit subjects follow CLAUDE.md, not Conventional Commits
           VALIDATE_GIT_COMMITLINT: false
           # PR summary comments need pull-requests: write, which this job doesn't grant

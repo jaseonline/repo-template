@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       # The R2 action uploads an existing file; it doesn't create one. git archive packs the committed tree only
       # (no .git, nothing gitignored). The name comes from github.repository because scheduled runs have no

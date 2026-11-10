@@ -16,6 +16,8 @@ end_of_line = crlf
 
 [*.md]
 trim_trailing_whitespace = false
+# Numbered-list continuations need 3 spaces
+indent_size = unset
 
 [Makefile]
 indent_style = tab

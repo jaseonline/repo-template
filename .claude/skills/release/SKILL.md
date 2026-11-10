@@ -4,6 +4,8 @@ description: Cut a new version — bump the version everywhere it lives, move CH
 disable-model-invocation: true
 ---
 
+# Release
+
 Release a new version. `$ARGUMENTS` is the new version (e.g. `1.4.0`) or `patch` / `minor` / `major`.
 
 1. Read the **Versioning** section of `CLAUDE.md` to find every file that holds the version (e.g. `pyproject.toml`, `package.json`, `__init__.py`, a manifest). If the section is missing or still a placeholder, stop and ask where the version lives.

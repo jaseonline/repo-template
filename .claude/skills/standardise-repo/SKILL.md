@@ -4,6 +4,8 @@ description: Compare an existing repository with the jaseonline/repo-template st
 disable-model-invocation: true
 ---
 
+# Standardise repo
+
 Align the current repo (or the path in `$ARGUMENTS`) with `jaseonline/repo-template`. **Report first, change nothing until approved.**
 
 ## 1. Get the reference
