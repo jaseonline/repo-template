@@ -76,7 +76,10 @@ Wait for the user to pick which groups or items to apply.
 
 - Merge, don't overwrite: keep repo-specific content in CLAUDE.md, .gitignore and settings.json; add the missing template parts around it.
 - Fill placeholders from the repo (name from the remote, description from the existing README, year from the first commit).
-- New workflows needing secrets: list the secrets and check with `gh secret list`. Values come from Keeper record `9LXoL-ZWhZDI-V53hRZ3KQ` (`keeper get <uid> --format json`). Pipe each value into `gh secret set` with `jq -j` and never print it. `CF_ACCOUNT_ID` isn't a field: derive it from the record's `host` (`https://<account>.r2.cloudflarestorage.com`). Never ask the user to type a secret into the chat or at a `!` prompt.
+- New workflows needing secrets: list the secrets and check with `gh secret list`.
+  - Values come from Keeper record `9LXoL-ZWhZDI-V53hRZ3KQ` (`keeper get <uid> --format json`). Pipe each value into `gh secret set` with `jq -j` and never print it.
+  - `CF_ACCOUNT_ID` isn't a field: derive it from the record's `host` (`https://<account>.r2.cloudflarestorage.com`).
+  - Never ask the user to type a secret into the chat or at a `!` prompt.
 - Run the repo's tests and lint after changes. Run `bash -n` on hook scripts and validate JSON/YAML.
 - Stage and show `git diff --cached --stat`. Propose the subject `Align with repo-template` and wait for approval. Never push without approval.
 - **Deploy-on-push repos:** batch the approved groups into as few local commits as possible, then push once. Each push is a production deploy. After it, run the repo's smoke-test skill (e.g. `/verify-live`) if it has one.
