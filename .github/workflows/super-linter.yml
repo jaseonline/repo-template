@@ -1,0 +1,36 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      statuses: write # report each linter as a status check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          # super-linter needs full history to work out which files changed
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Super-linter
+        # Pinned to the full version: super-linter's short tags (v9, slim-v9) move between releases
+        uses: super-linter/super-linter/slim@v9.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          # Repo-specific linter configs go in .github/linters/
+          LINTER_RULES_PATH: .github/linters
+          # Formatting is owned by the stack's formatter (ruff / biome), not super-linter
+          VALIDATE_JSCPD: false
