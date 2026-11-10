@@ -2,6 +2,8 @@
 
 {{DESCRIPTION}}
 
+_Last updated: 2026-11-10_
+
 ## Quick start
 
 ```sh
