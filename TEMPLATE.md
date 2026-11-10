@@ -37,6 +37,6 @@ Then open Claude Code in the existing repo and run `/standardise-repo`. It compa
 ## Template conventions
 
 - **Licence:** MIT, `Copyright (c) {{YEAR}} jaseonline`. Forks keep their upstream licence.
-- **Action pinning:** `actions/checkout@v7`, `anthropics/claude-code-action@v1`, `super-linter/super-linter/slim@v9.0.0` (full version, because super-linter's short tags move). Dependabot keeps them current.
+- **Action pinning:** every `uses:` is pinned to a full commit SHA with the version as a trailing comment (`actions/checkout@<sha> # v7.0.1`). Tags can be moved, SHAs can't, and super-linter's zizmor check fails on unpinned actions. Dependabot updates the SHA and the comment together.
 - **`.claude/`:** `settings.json`, `hooks/`, `skills/`, `agents/` and `commands/` are tracked; `settings.local.json` and other local state are ignored.
 - **Line endings:** LF everywhere except `*.ps1`, `*.cmd` and `*.bat` (CRLF), so hooks run under Git Bash on Windows and on CI runners.

@@ -30,7 +30,7 @@ Use a local checkout if one exists (`D:\Projects\active\repo-template`), otherwi
 | .claude/settings.json | Deny rules for secrets + force-push; push-guard hook; stack hook | Missing hooks; secrets readable |
 | .claude/hooks/push-guard.sh | Present; `DEPLOY_PATHS` set if the repo deploys on push | Missing, or no path filter on a deploy-on-push repo |
 | .claude/skills/ | `release` present if the repo is versioned | Missing; check skill frontmatter is valid |
-| .github/workflows | claude.yml, claude-code-review.yml, super-linter.yml, backup.yml | Missing; action versions behind the template (`checkout@v7`, `super-linter/slim@v9.0.0`, `claude-code-action@v1`) |
+| .github/workflows | claude.yml, claude-code-review.yml, super-linter.yml, backup.yml | Missing; actions not SHA-pinned (`@<sha> # vX.Y.Z`) or behind the template's versions: copy the SHAs from the template's workflows |
 | .github/dependabot.yml | `github-actions` + stack ecosystem; valid config | Missing, empty `package-ecosystem`, or pointed at `.venv`/`node_modules` |
 | Issue / PR templates | YAML issue forms + PR template (public repos only) | Missing on public repo |
 | Folder layout | `src/`, `tests/`, `docs/`, `scripts/` where they make sense | Report only. **Never move source files**: imports, build paths and deploy config depend on them |

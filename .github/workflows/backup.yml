@@ -12,7 +12,7 @@ jobs:
   backup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # The R2 action uploads an existing file; it doesn't create one. git archive packs the committed tree only
       # (no .git, nothing gitignored). The name comes from github.repository because scheduled runs have no
@@ -25,7 +25,7 @@ jobs:
           ls -l "$file"
           echo "file=$file" >> "$GITHUB_OUTPUT"
 
-      - uses: NX1X/Cloudflare-R2-backup-action@v1
+      - uses: NX1X/Cloudflare-R2-backup-action@170cc1daf854595c704a781f4d1dbe506a2b9f15 # v1.0.0
         with:
           operation: upload
           account-id: ${{ secrets.CF_ACCOUNT_ID }}

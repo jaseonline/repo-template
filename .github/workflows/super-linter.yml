@@ -18,21 +18,20 @@ jobs:
       statuses: write # report each linter as a status check
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # super-linter needs full history to work out which files changed
           fetch-depth: 0
           persist-credentials: false
 
       - name: Super-linter
-        # Pinned to the full version: super-linter's short tags (v9, slim-v9) move between releases
-        uses: super-linter/super-linter/slim@v9.0.0
+        uses: super-linter/super-linter/slim@2da136927bd4a73596db63044b504547c62cb854 # v9.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
           # Repo-specific linter configs go in .github/linters/
           LINTER_RULES_PATH: .github/linters
-          # stacks/ holds merge-in fragments (deleted after setup); its nested biome.json clashes with the root config
+          # stacks/ holds merge-in fragments that are deleted after setup
           FILTER_REGEX_EXCLUDE: '.*stacks/.*'
           # One tool per job: ruff for Python, Biome for JS/TS/JSON (matching the stack hooks), so drop the overlaps
           VALIDATE_PYTHON_BLACK: false
