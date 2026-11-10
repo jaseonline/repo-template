@@ -13,7 +13,8 @@ Delete this file and `stacks/` once the steps below are done.
    - append its `dependabot.yml` entry to `.github/dependabot.yml`
    - copy any stub files it lists
 4. **Fill in CLAUDE.md** (architecture rules, gotchas, versioning) and the SECURITY.md controls, or delete sections that don't apply.
-5. **Add repo secrets** for the workflows you keep:
+5. **Claude GitHub App:** standard on every repo. Install it once for all repositories at <https://github.com/apps/claude/installations/new> (or add this repo if it's limited to selected ones). The Claude workflows use its token, so commits and branches Claude pushes trigger CI, which `GITHUB_TOKEN` pushes don't.
+6. **Add repo secrets** for the workflows you keep:
 
    | Workflow | Secrets |
    | --- | --- |
@@ -21,8 +22,8 @@ Delete this file and `stacks/` once the steps below are done.
    | `backup.yml` | `CF_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` |
    | `super-linter.yml` | none (`GITHUB_TOKEN` is automatic) |
 
-6. **Delete what doesn't apply:** empty `src/` or `tests/`, unused workflows, issue templates on a private repo.
-7. Delete `stacks/` and this file, then commit.
+7. **Delete what doesn't apply:** empty `src/` or `tests/`, unused workflows, issue templates on a private repo.
+8. Delete `stacks/` and this file, then commit.
 
 ## Existing repo
 
