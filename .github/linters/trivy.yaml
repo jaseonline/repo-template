@@ -8,5 +8,5 @@ scan:
     - misconfig
     - secret
   # Example: public-by-design tokens (e.g. a DID JWT in .well-known/)
-  # skip-dirs:
-  #   - src/.well-known
+  skip-dirs:
+    - .well-known/
