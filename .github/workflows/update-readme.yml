@@ -1,10 +1,9 @@
 name: README build
 on:
   push:
-    branches:
-      — main
+    branches: [ main ]
   schedule:
-    — cron: "0 */6 * * *"
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
@@ -13,29 +12,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      — name: 'Checkout current repository to Master branch'
+      - name: Checkout current repository to Master branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
 
-      — name: Setup NodeJs 13.x
+      - name: Setup NodeJs 13.x
         uses: actions/setup-node@v7
         with:
           node-version: "13.x"
 
-      — name: Cache dependencies and build outputs to improve workflow execution time.
+      - name: Cache dependencies and build outputs to improve workflow execution time.
         uses: actions/cache@v6
         with:
           path: node_modules
           key: ${{ runner.os }}-js-${{ hashFiles('package-lock.json') }}
 
-      — name: Install dependencies
+      - name: Install dependencies
         run: npm install
 
-      — name: Generate README file
+      - name: Generate README file
         run: node index.js
- 
-      — name: Commit and Push new README.md to the repository
+
+      - name: Commit and Push new README.md to the repository
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: main
