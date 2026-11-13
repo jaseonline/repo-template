@@ -12,31 +12,30 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout current repository to Master branch
+      - name: Checkout current repository to Main branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-
-      - name: Setup NodeJs 24.x
-        uses: actions/setup-node@v7
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v2
         with:
-          node-version: "24.x"
-
+          node-version: "22.x"
       - name: Cache dependencies and build outputs to improve workflow execution time.
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
-          path: node_modules
-          key: ${{ runner.os }}-js-${{ hashFiles('package-lock.json') }}
-
+          path: ~/.npm
+          key: ${{ runner.os }}-js-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-js-
       - name: Install dependencies
         run: npm install
-
       - name: Generate README file
         run: node index.js
-
       - name: Commit and Push new README.md to the repository
-        uses: mikeal/publish-to-github-action@8ba53806ac31f0f17287ade9fe7639f697b8bc1d # 1.0.0
+        uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c
+        with:
+          commit_message: Update README.md
+          commit_options: "--no-verify"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: main
