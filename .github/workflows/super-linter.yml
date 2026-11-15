@@ -44,13 +44,13 @@ jobs:
           VALIDATE_TYPESCRIPT_PRETTIER: false
           VALIDATE_JSX: false
           VALIDATE_TSX: false
-          VALIDATE_JSON: false
+          VALIDATE_JSON: true
           VALIDATE_JSON_PRETTIER: false
           VALIDATE_JSONC_PRETTIER: false
           VALIDATE_CSS_PRETTIER: false
-          VALIDATE_HTML_PRETTIER: false
+          VALIDATE_HTML_PRETTIER: true
           VALIDATE_MARKDOWN_PRETTIER: false
-          VALIDATE_YAML_PRETTIER: false
+          VALIDATE_YAML_PRETTIER: true
           VALIDATE_JSCPD: false
           # textlint's terminology rule rejects house style ("repo", "README"); prose isn't linted
           VALIDATE_NATURAL_LANGUAGE: false
