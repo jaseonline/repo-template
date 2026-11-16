@@ -2,8 +2,8 @@
 
 ## Supported versions
 
-| Version | Supported |
-| --- | --- |
+| Version        | Supported  |
+| -------------- | ---------- |
 | Latest release | ✅ Current |
 
 Only the latest release receives security fixes. Update to the latest version before reporting issues found in older releases.
@@ -12,11 +12,11 @@ Only the latest release receives security fixes. Update to the latest version be
 
 <!-- Replace with this project's real controls, or delete the section if there are none worth stating. -->
 
-| Layer | Control |
-| --- | --- |
+| Layer   | Control                                                                                            |
+| ------- | -------------------------------------------------------------------------------------------------- |
 | Secrets | Read from environment variables or the OS credential store; never committed. `.env*` is gitignored |
-| Access | … |
-| Logging | … (never logs secrets or content) |
+| Access  | …                                                                                                  |
+| Logging | … (never logs secrets or content)                                                                  |
 
 Residual risks:
 
@@ -37,8 +37,8 @@ Please do **not** open public issues for security problems. Report privately ins
 
 ### Response commitments
 
-| Phase | Timeline |
-| --- | --- |
-| Initial response | Within 14 days |
-| Triage | Within 21 days |
-| Disclosure | Coordinated, within 90 days |
+| Phase            | Timeline                    |
+| ---------------- | --------------------------- |
+| Initial response | Within 14 days              |
+| Triage           | Within 21 days              |
+| Disclosure       | Coordinated, within 90 days |

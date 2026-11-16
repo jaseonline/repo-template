@@ -16,11 +16,11 @@ Delete this file and `stacks/` once the steps below are done.
 5. **Claude GitHub App:** standard on every repo. Install it once for all repositories at <https://github.com/apps/claude/installations/new> (or add this repo if it's limited to selected ones). The Claude workflows use its token, so commits and branches Claude pushes trigger CI, which `GITHUB_TOKEN` pushes don't.
 6. **Add repo secrets** for the workflows you keep:
 
-   | Workflow | Secrets |
-   | --- | --- |
+   | Workflow                               | Secrets                                                                                   |
+   | -------------------------------------- | ----------------------------------------------------------------------------------------- |
    | `claude.yml`, `claude-code-review.yml` | `CLAUDE_CODE_OAUTH_TOKEN` (`claude setup-token`, or `/install-github-app` in Claude Code) |
-   | `backup.yml` | `CF_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` |
-   | `super-linter.yml` | none (`GITHUB_TOKEN` is automatic) |
+   | `backup.yml`                           | `CF_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`                               |
+   | `super-linter.yml`                     | none (`GITHUB_TOKEN` is automatic)                                                        |
 
 7. **Delete what doesn't apply:** empty `src/` or `tests/`, unused workflows, issue templates on a private repo.
 8. Delete `stacks/` and this file, then commit.

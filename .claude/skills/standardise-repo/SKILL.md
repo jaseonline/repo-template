@@ -23,33 +23,33 @@ Use a local checkout if one exists (`D:\Projects\active\repo-template`), otherwi
 
 ## 3. Check each item
 
-| Area | Standard | Check |
-| --- | --- | --- |
-| README.md | Present; title, description, quick start, configuration, licence | Missing sections |
-| LICENSE | MIT, `jaseonline`, current year | Missing / different. **Never change an existing licence**: flag it only |
-| SECURITY.md | Template shape; advisory link points at this repo | Missing, or link points elsewhere |
-| CONTRIBUTING.md, CHANGELOG.md | Present; CHANGELOG has `## Unreleased` | Missing |
-| CLAUDE.md | Standard header line; Commands / Architecture rules / Gotchas / Versioning / Git sections | Missing sections, stale commands (verify they exist), pasted placeholders |
-| .gitignore | Template base + stack fragment; `.claude/*` with `!` re-includes; `.remember/`; `.env*` with `!.env.example` | Stock templates for the wrong language; tracked files that should be ignored (`git ls-files -ci --exclude-standard`) |
-| .gitattributes, .editorconfig | Present; LF default, CRLF for `*.ps1` | Missing, or `.sh` files with CRLF |
-| .claude/settings.json | Deny rules for secrets + force-push; push-guard hook; stack hook | Missing hooks; secrets readable |
-| .claude/hooks/push-guard.sh | Present; `DEPLOY_PATHS` set if the repo deploys on push | Missing, or no path filter on a deploy-on-push repo |
-| .claude/skills/ | `release` present if the repo is versioned | Missing; check skill frontmatter is valid |
-| .github/workflows | claude.yml, claude-code-review.yml, super-linter.yml, backup.yml | Missing; actions not SHA-pinned (`@<sha> # vX.Y.Z`) or behind the template's versions: copy the SHAs from the template's workflows |
-| Claude GitHub App | Installed; Claude workflows use `claude_code_oauth_token`, not `anthropic_api_key` + `github_token` | Workflows using the API-key route. The App can't be checked from the CLI: ask the user to confirm it's installed |
-| .github/dependabot.yml | `github-actions` + stack ecosystem with `cooldown: default-days: 7`; valid config | Missing, empty `package-ecosystem`, or pointed at `.venv`/`node_modules` |
-| Issue / PR templates | YAML issue forms + PR template (public repos only) | Missing on public repo |
-| Folder layout | `src/`, `tests/`, `docs/`, `scripts/` where they make sense | Report only. **Never move source files**: imports, build paths and deploy config depend on them |
+| Area                          | Standard                                                                                                     | Check                                                                                                                              |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| README.md                     | Present; title, description, quick start, configuration, licence                                             | Missing sections                                                                                                                   |
+| LICENSE                       | MIT, `jaseonline`, current year                                                                              | Missing / different. **Never change an existing licence**: flag it only                                                            |
+| SECURITY.md                   | Template shape; advisory link points at this repo                                                            | Missing, or link points elsewhere                                                                                                  |
+| CONTRIBUTING.md, CHANGELOG.md | Present; CHANGELOG has `## Unreleased`                                                                       | Missing                                                                                                                            |
+| CLAUDE.md                     | Standard header line; Commands / Architecture rules / Gotchas / Versioning / Git sections                    | Missing sections, stale commands (verify they exist), pasted placeholders                                                          |
+| .gitignore                    | Template base + stack fragment; `.claude/*` with `!` re-includes; `.remember/`; `.env*` with `!.env.example` | Stock templates for the wrong language; tracked files that should be ignored (`git ls-files -ci --exclude-standard`)               |
+| .gitattributes, .editorconfig | Present; LF default, CRLF for `*.ps1`                                                                        | Missing, or `.sh` files with CRLF                                                                                                  |
+| .claude/settings.json         | Deny rules for secrets + force-push; push-guard hook; stack hook                                             | Missing hooks; secrets readable                                                                                                    |
+| .claude/hooks/push-guard.sh   | Present; `DEPLOY_PATHS` set if the repo deploys on push                                                      | Missing, or no path filter on a deploy-on-push repo                                                                                |
+| .claude/skills/               | `release` present if the repo is versioned                                                                   | Missing; check skill frontmatter is valid                                                                                          |
+| .github/workflows             | claude.yml, claude-code-review.yml, super-linter.yml, backup.yml                                             | Missing; actions not SHA-pinned (`@<sha> # vX.Y.Z`) or behind the template's versions: copy the SHAs from the template's workflows |
+| Claude GitHub App             | Installed; Claude workflows use `claude_code_oauth_token`, not `anthropic_api_key` + `github_token`          | Workflows using the API-key route. The App can't be checked from the CLI: ask the user to confirm it's installed                   |
+| .github/dependabot.yml        | `github-actions` + stack ecosystem with `cooldown: default-days: 7`; valid config                            | Missing, empty `package-ecosystem`, or pointed at `.venv`/`node_modules`                                                           |
+| Issue / PR templates          | YAML issue forms + PR template (public repos only)                                                           | Missing on public repo                                                                                                             |
+| Folder layout                 | `src/`, `tests/`, `docs/`, `scripts/` where they make sense                                                  | Report only. **Never move source files**: imports, build paths and deploy config depend on them                                    |
 
 ### Private profile
 
 Apply the full template to private repos too: Jason wants LICENSE (MIT) and SECURITY.md everywhere, so they're always in scope. Differences:
 
-| Item | Private repo |
-| --- | --- |
-| SECURITY.md | GitHub private vulnerability reporting doesn't work on private repos. Keep the advisory link but add "while it's private, contact @jaseonline directly" |
-| Issue forms, PR template, CONTRIBUTING.md | Optional: offer them, but mark them **Needs a decision**, not Missing |
-| `claude.yml` | The OWNER-only check still applies (collaborators can comment) |
+| Item                                      | Private repo                                                                                                                                            |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SECURITY.md                               | GitHub private vulnerability reporting doesn't work on private repos. Keep the advisory link but add "while it's private, contact @jaseonline directly" |
+| Issue forms, PR template, CONTRIBUTING.md | Optional: offer them, but mark them **Needs a decision**, not Missing                                                                                   |
+| `claude.yml`                              | The OWNER-only check still applies (collaborators can comment)                                                                                          |
 
 ### Super-linter v9 checks that catch repos out
 
