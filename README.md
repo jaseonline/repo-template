@@ -5,7 +5,6 @@
 {{ env.REPOSITORY_DESCRIPTION }}
 
 _Last updated: 2026-11-15_
-Last updated: {{ env.REPOSITORY_UPDATED_AT }}
 
 ## Quick start
 
