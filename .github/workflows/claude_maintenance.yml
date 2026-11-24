@@ -13,11 +13,11 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
 
-      - uses: anthropics/claude-code-action@6d5ae526d25ce88daa2200be073e1a373167f064
+      - uses: anthropics/claude-code-action@6070f08d2b4766348e0acded463606a7b176417b
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
