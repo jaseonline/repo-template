@@ -1,9 +1,9 @@
+---
 name: Cloudflare R2 Backup
-
 on:
   schedule:
-    - cron: "0 0 * * 0" # every Sunday at midnight UTC
-  workflow_dispatch:
+    - cron: "0 0 * * 0" # Every Sunday at midnight
+  workflow_dispatch: # Manual trigger option
 
 permissions:
   contents: read
@@ -12,11 +12,8 @@ jobs:
   backup:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
-      # The R2 action uploads an existing file; it doesn't create one. git archive packs the committed tree only
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      # The R2 action uploads an existing file; it does not create one. git archive packs the committed tree only
       # (no .git, nothing gitignored). The name comes from github.repository because scheduled runs have no
       # github.event.repository.
       - name: Create archive
@@ -26,13 +23,13 @@ jobs:
           git archive --format=tar.gz --prefix="${GITHUB_REPOSITORY#*/}/" -o "$file" HEAD
           ls -l "$file"
           echo "file=$file" >> "$GITHUB_OUTPUT"
-
-      - uses: NX1X/Cloudflare-R2-backup-action@170cc1daf854595c704a781f4d1dbe506a2b9f15 # v1.0.0
+      - uses: NX1X/Cloudflare-R2-backup-action@170cc1daf854595c704a781f4d1dbe506a2b9f15
         with:
           operation: upload
           account-id: ${{ secrets.CF_ACCOUNT_ID }}
           access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           bucket: github
-          file: ./${{ steps.archive.outputs.file }}
+          # prefix: /folder
+          file: ${{ steps.archive.outputs.file }}
           retention-days: '90'
